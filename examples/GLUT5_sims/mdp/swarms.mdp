@@ -1,0 +1,146 @@
+;;;;;;;;;;;;;;;;;;;; MDP Parameters for swarms simulations of string-method ::::::::::::::::::::::::::::
+
+; These parameters are not recomended to be modified.
+; Of course do so if you know what you are doing.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+integrator              = md
+nsteps                  = 5000
+nstxtcout               = 5000
+nstlog                  = 0
+nstxout                 = 0
+nstvout                 = 0
+nstfout                 = 0
+nstcalcenergy           = 100
+nstenergy               = 0
+cutoff-scheme           = Verlet
+gen-vel                 = no
+gen-seed                 = -1
+ld-seed = -1
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; These parameters should be adapted to your MD simulation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; If df!=0.002 might need to change number of steps
+;
+dt                      = 0.002
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = pme
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+rvdw                    = 1.2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; We recommend the use of a stochastic thermostat like V-rescale
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+tcoupl                  = V-rescale
+tc_grps                 = protein waters_or_ions lipids
+tau_t                   = 1.0    1.0    1.0
+ref_t                   = 300. 300. 300. 
+gen-temp                 = 300.
+;
+pcoupl                  = Parrinello-Rahman
+pcoupltype              = semiisotropic
+tau_p                   = 5.0
+compressibility         = 4.5e-5  4.5e-5
+ref_p                   = 1.0     1.0
+DispCorr                = EnerPres  ; account for cut-off vdW scheme
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps                 = protein waters_or_ions lipids
+;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; At this point the pull simulation parameters will be added by input_maker.ipynb
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;start pull
+
+pull = yes
+pull-ngroups = 28
+
+pull-group1-name = r_289
+pull-group2-name = r_445
+pull-group3-name = r_97
+pull-group4-name = r_394
+pull-group5-name = r_290
+pull-group6-name = r_344
+pull-group7-name = r_205
+pull-group8-name = r_452
+pull-group9-name = r_103
+pull-group10-name = r_295
+pull-group11-name = r_144
+pull-group12-name = r_454
+pull-group13-name = r_290_b
+pull-group14-name = r_379
+pull-group15-name = r_195
+pull-group16-name = r_292
+pull-group17-name = r_148
+pull-group18-name = r_198
+pull-group19-name = r_146
+pull-group20-name = r_391
+pull-group21-name = r_200
+pull-group22-name = r_407
+pull-group23-name = r_290_c
+pull-group24-name = r_314
+pull-group25-name = r_146_b
+pull-group26-name = r_337
+pull-group27-name = r_266
+pull-group28-name = r_374
+
+pull-ncoords = 14
+pull-coord1-geometry = distance
+pull-coord1-k = 0.0
+pull-coord1-groups = 1 2
+pull-coord2-geometry = distance
+pull-coord2-k = 0.0
+pull-coord2-groups = 3 4
+pull-coord3-geometry = distance
+pull-coord3-k = 0.0
+pull-coord3-groups = 5 6
+pull-coord4-geometry = distance
+pull-coord4-k = 0.0
+pull-coord4-groups = 7 8
+pull-coord5-geometry = distance
+pull-coord5-k = 0.0
+pull-coord5-groups = 9 10
+pull-coord6-geometry = distance
+pull-coord6-k = 0.0
+pull-coord6-groups = 11 12
+pull-coord7-geometry = distance
+pull-coord7-k = 0.0
+pull-coord7-groups = 13 14
+pull-coord8-geometry = distance
+pull-coord8-k = 0.0
+pull-coord8-groups = 15 16
+pull-coord9-geometry = distance
+pull-coord9-k = 0.0
+pull-coord9-groups = 17 18
+pull-coord10-geometry = distance
+pull-coord10-k = 0.0
+pull-coord10-groups = 19 20
+pull-coord11-geometry = distance
+pull-coord11-k = 0.0
+pull-coord11-groups = 21 22
+pull-coord12-geometry = distance
+pull-coord12-k = 0.0
+pull-coord12-groups = 23 24
+pull-coord13-geometry = distance
+pull-coord13-k = 0.0
+pull-coord13-groups = 25 26
+pull-coord14-geometry = distance
+pull-coord14-k = 0.0
+pull-coord14-groups = 27 28
+
+pull-print-components = no
+pull-nstxout = 5000
+pull-nstfout = 0
