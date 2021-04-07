@@ -150,3 +150,7 @@ examples/start-up/md/*
 examples/start-up/topology/index.ndx
 examples/start-up/strings/string0.txt
 examples/start-up/cv.pkl
+
+
+#ignore sarah simulation data too
+glut5_string/md/*
